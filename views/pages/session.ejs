@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include ../partials/head %>
+</head>
+
+<body class="skin-blue fixed sidebar-mini sidebar-mini-expand-feature">
+	<div class="wrapper">
+
+		<header class="main-header">
+			<% include ../partials/header %>
+		</header>
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
+			<% include ../partials/sidebar %>
+		</aside>
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>Session Manager</h1>
+
+				<ol class="breadcrumb">
+					<li>
+						<a href="./">
+							<i class="fa fa-bar-chart"></i> Reports</a>
+					</li>
+					<li class="active">Session Manager</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="box">
+							<div class="box-header with-border">
+								<h3 class="box-title">Sessions</h3>
+								<div class="pull-right box-tools">
+									<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Create New Session" onclick='newSessionModal()'>
+										Create New Session
+									</button>
+
+									<button type="button" class="btn btn-success" data-toggle="tooltip" title="Download" onclick='downloadModal()'>
+										Download
+									</button>
+								</div>
+							</div>
+							<!-- /.box-header -->
+							<div id="sessiontablediv" class="box-body table-responsive" style="overflow-x: scroll">
+								<table id="sessiontable" class="table table-bordered table-hover" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th class="text-center">ID</th>
+											<th class="text-center">Name</th>
+											<th class="text-center">Device</th>
+											<th class="text-center">Direction</th>
+											<th class="text-center">Tester</th>
+											<th class="text-center">Start</th>
+											<th class="text-center">End</th>
+											<th class="text-center">Duration</th>
+											<th class="text-center">Notes</th>
+											<th class="text-center">Session Status</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+				</div>
+				<div id="csv"></div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content - wrapper -->
+
+		<footer class="main-footer">
+			<% include ../partials/footer %>
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+	<!-- modals -->
+
+	<div class="modal fade" id="sessionModal" tabindex="-1" role="dialog" aria-labelledby="sessionModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="configModalLabel">Session Details</h4>
+				</div>
+				<div class="modal-body">
+					<form id="sessionForm">
+						<div class="form-group">
+							<label for="inputSessionID" class="control-label">Session ID</label>
+							<input type="text" class="form-control" id="inputSessionID" placeholder="Generated on create" disabled>
+						</div>
+						<div class="form-group">
+							<label for="inputSessionName" class="control-label">Session Name</label>
+							<input type="text" class="form-control" id="inputSessionName" data-maxlength="255" placeholder="Session Name" required data-validation="length"
+							    data-validation-length="max255">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Provider Device</label>
+							<select class="form-control" id='inputSessionProviderDevice'>
+							
+								<option value='Convo_Android'>Convo Android</option>
+								<option value='Convo_iOS'>Convo iOS</option>
+								<option value='Convo_Mac'>Convo Mac</option>
+								<option value='Convo_Windows'>Convo Windows</option>
+							
+								<option value='Global_Android'>Global Android</option>
+								<option value='Global_iOS'>Global iOS</option>
+								<option value='Global_Windows'>Global Windows</option>
+							
+								<option value='Purple_Android'>Purple Android</option>
+								<option value='Purple_iOS'>Purple iOS</option>
+								<option value='Purple_Mac'>Purple Mac</option>
+								<option value='Purple_VP1'>Purple VP1 SmartVP</option>
+								<option value='Purple_VP2'>Purple VP2 P70</option>
+								<option value='Purple_Windows'>Purple Windows</option>
+							
+								<option value='Sorenson_Android'>Sorenson Android</option>
+								<option value='Sorenson_iOS'>Sorenson iOS</option>
+								<option value='Sorenson_Mac'>Sorenson Mac</option>
+								<option value='Sorenson_VP1'>Sorenson VP1</option>
+								<option value='Sorenson_VP2'>Sorenson VP2</option>
+								<option value='Sorenson_Windows'>Sorenson Windows</option>
+							
+								<option value='ZVRS_iOS'>ZVRS iOS</option>
+								<option value='ZVRS_Mac'>ZVRS Mac</option>
+								<option value='ZVRS_VP1'>ZVRS VP1 Z70</option>
+								<option value='ZVRS_VP2'>ZVRS VP2 Z20</option>
+								<option value='ZVRS_VP3'>ZVRS VP3 i3</option>
+								<option value='ZVRS_Windows'>ZVRS Windows</option>
+							
+								<option value='Other'>Other</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Call Direction</label>
+							<select class="form-control" id='inputSessionCallDirection'>
+								<option value='inbound'>Inbound</option>
+								<option value='outbound'>Outbound</option>
+								<option value='videomail'>Videomail</option>
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="inputSessionTesterName" class="control-label">Tester Name</label>
+							<input type="text" class="form-control" id="inputSessionTesterName" disabled>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="form-group">
+									<label for="inputSessionStartTime" class="control-label">Start Time</label>
+									<input type="text" class="form-control" id="inputSessionStartTime" disabled>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<label for="inputSessionEndTime" class="control-label">End Time</label>
+									<input type="text" class="form-control" id="inputSessionEndTime" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Pass/Fail</label>
+							<select class="form-control" id='inputSessionPassFail'>
+								<option value='0'>N/A</option>
+								<option value='1'>Pass</option>
+								<option value='2'>Fail</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="textareaSessionNotes" class="control-label">Notes</label>
+							<textarea class="form-control" rows="3" placeholder="Session Notes...." id="textareaSessionNotes"></textarea>
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" id='btnCreateSession'>Create Session</button>
+					<button type="button" class="btn btn-danger" id='btnDeleteSession'>Delete</button>
+					<button type="button" class="btn btn-primary" id='btnUpdateSession'>Update</button>
+					<button type="button" class="btn btn-success" id='btnStartSession' disabled>Start Recording</button>
+					<button type="button" class="btn btn-danger" id='btnStopSession'>Stop Recording</button>
+					<button type="button" class="btn btn-warning" id='btnViewResults'>View Results</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="configModalLabel">Session Downloads</h4>
+				</div>
+
+				<form class="form-horizontal test-form toggle-disabled has-validation-callback disabled-without-errors" id="downloadForm">
+					<div class="modal-body">
+						<div class="form-group form-custom">
+							<label>Filename</label>
+							<input type="text" class="form-control" id="downloadFilename" placeholder="Create a filename for the download" required data-validation="length" data-validation-length="min1">
+						</div>
+						<div class="form-group form-custom">
+							<label>Download Options</label>
+							<select class="form-control" id='select_download_option'>
+								<option value='0'>Download All Sessions</option>
+								<option value='1'>Download By Date Range</option>
+								<option value='2'>Download Select Sessions</option>
+							</select>
+						</div>
+						<div class="form-group form-custom" id="formDaterange" hidden>
+							<div id="reportrange" class="dropdown-menu-left">
+								<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+								<span></span>
+								<b class="caret"></b>
+							</div>
+						</div>
+						<div class="form-group form-custom" id="formSessioids" hidden>
+							<label>Session IDs (example: 12,35,50)</label>
+							<!--input type="text" class="form-control" id="sessionIds" placeholder="Enter session IDs separated by comma" data-validation="custom" data-validation-regexp="^\d*(,\d*)*$" data-validation-optional="true"-->
+							<input type="text" class="form-control" id="sessionIds" placeholder="Enter session IDs separated by comma" data-validation="number"  data-validation-ignore="," data-validation-optional="true">
+						</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-success" id='btnDownloadSessionData'>Download</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>Do you want to proceed?</p>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-danger" onclick='deleteSession()'>Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		$('#reports_treeview').addClass('active');
+		$('#reports_session_manager_treeview').addClass('active');
+		var datatable, startdate, enddate;
+
+		// sets the Date Range picker start and end date
+		var start = moment("2018-02-01");
+		var end = moment(); //today
+
+		// Call back funtion for setting report range <div> value
+		function cb(newStart, newEnd) {
+			$('#reportrange span').html(newStart.format('MMMM D, YYYY') + ' - ' + newEnd.format('MMMM D, YYYY'));
+			start = newStart;
+			end = newEnd
+		}
+
+		// controls for the date range picker
+		$('#reportrange').daterangepicker({
+			startDate: start,
+			endDate: end,
+			ranges: {
+				'Today': [moment(), moment()],
+				'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+				'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+				'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+				'This Month': [moment().startOf('month'), moment().endOf('month')],
+				'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+				'All Time': [start, end]
+			}
+		}, cb);
+		cb(start, end);
+
+		datatable = $('#sessiontable').DataTable({
+			"columns": [{
+					"data": "session_id"
+				},
+				{
+					"data": "session_name"
+				},
+				{
+					"data": "provider_device"
+				},
+				{
+					"data": "call_direction"
+				},
+				{
+					"data": "tester_name"
+				},
+				{
+					"data": "session_start",
+					"render": function (value) {
+
+						return value ? moment(value).local().format('YYYY/MM/DD h:mm:ss a') : '';
+					}
+				},
+				{
+					"data": "session_end",
+					"render": function (value) {
+						return value ? moment(value).local().format('YYYY/MM/DD h:mm:ss a') : '';
+					}
+				},
+				{
+					"data": "session_duration"
+				},
+				{
+					"data": "session_notes",
+					"render": function (value) {
+						return (value) ? value.substring(0, 10) + '...' : "";
+					}
+				},
+				{
+					"data": "status",
+					"render": function (data, type, row) {
+						if (!row.session_start) {
+							return "Created"
+						} else if (!row.session_end) {
+							return "Running";
+						} else {
+							return "Completed";
+						}
+					}
+				}
+			],
+			"order": [
+				[0, "desc"]
+			],
+			"columnDefs": [{
+				'nowrap': 'true',
+				"width": "50px",
+				"targets": 2
+			}],
+			"rowCallback": function (row, data, index) {
+				if (data.passfail == 'fail') {
+					$(row).css('background-color', '#f2dede');
+				} else if (data.passfail == 'pass') {
+					$(row).css('background-color', '#dff0d8');
+				}
+			}
+		});
+
+		getTableData();
+
+		$('#sessiontable tbody').on('click', 'tr', function () {
+			var data = datatable.row(this).data();
+			datatable.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+			$.ajax({
+				url: "./getSessionInfo",
+				data: {
+					"session_id": data.session_id
+				},
+				success: function (sessioninfo) {
+					if (sessioninfo.message == 'Success') {
+						$("#sessionForm").trigger("reset");
+
+						$('#btnCreateSession').prop('disabled', true);
+						$('#btnStartSession').prop('disabled', true);
+						$('#btnCreateSession').hide();
+						$('#btnUpdateSession').show();
+						$('#btnStartSession').show();
+						$('#btnStopSession').hide();
+						$('#btnViewResults').hide();
+
+
+						$('#inputSessionID').val(sessioninfo.data[0].session_id)
+						$('#inputSessionName').val(sessioninfo.data[0].session_name)
+						$('#inputSessionTesterName').val(sessioninfo.data[0].tester_name)
+						$('#inputSessionStartTime').val(sessioninfo.data[0].session_start)
+						$('#inputSessionEndTime').val(sessioninfo.data[0].session_end)
+						$('#textareaSessionNotes').val(sessioninfo.data[0].session_notes)
+
+						if (sessioninfo.data[0].passfail == 'pass') {
+							$('#inputSessionPassFail').val('1')
+						} else if (sessioninfo.data[0].passfail == 'fail') {
+							$('#inputSessionPassFail').val('2')
+						}
+
+						$('#inputSessionProviderDevice').val(sessioninfo.data[0].provider_device)
+						$('#inputSessionCallDirection').val(sessioninfo.data[0].call_direction)
+
+						if (!sessioninfo.data[0].session_start) {
+							$('#btnStartSession').prop('disabled', false);
+						} else if (!sessioninfo.data[0].session_end) {
+							$('#btnStartSession').prop('disabled', true);
+							$('#btnStopSession').prop('disabled', false);
+							$('#btnStartSession').hide();
+							$('#btnStopSession').show();
+
+						} else {
+							$('#btnStartSession').prop('disabled', true);
+							$('#btnStartSession').prop('disabled', true);
+							$('#btnStopSession').prop('disabled', true);
+							$('#btnStartSession').hide();
+							$('#btnStopSession').hide();
+							$('#btnViewResults').show();
+						}
+
+						$('#sessionModal').modal();
+					} else {
+						alert("Error")
+					}
+				}
+			});
+		});
+
+		function getTableData() {
+			$.ajax({
+				url: "./getSessionTableData",
+				success: function (data) {
+					if (data.message === "Success" && data.records.length > 0) {
+						$('#sessiontable').dataTable().fnClearTable();
+						$('#sessiontable').dataTable().fnAddData(data.records);
+						$('#sessiontable').resize();
+					} else {
+						$('#sessiontable').dataTable().fnClearTable();
+						$('#sessiontable').resize();
+						$(".dataTables_empty").html("No session records.");
+					}
+				}
+
+			});
+		}
+
+		function newSessionModal() {
+
+			$('#btnCreateSession').prop('disabled', false);
+			$('#btnStartSession').prop('disabled', true);
+			$('#btnCreateSession').show();
+			$('#btnUpdateSession').hide();
+			$('#btnStartSession').show();
+			$('#btnStopSession').hide();
+			$('#btnViewResults').hide();
+
+			$("#sessionForm").trigger("reset");
+
+			//$('#inputSessionTesterName').val()
+			$('#sessionModal').modal();
+		}
+
+		function downloadModal() {
+			$("#downloadForm").trigger("reset");
+			$('#downloadModal').modal();
+		}
+
+		$("#btnCreateSession").click(function (event) {
+			event.preventDefault();
+			$('#btnCreateSession').prop('disabled', true);
+			$.post("./createNewSession", {
+					"session_name": $('#inputSessionName').val(),
+					"notes": $('#textareaSessionNotes').val(),
+					"provider_device": $('#inputSessionProviderDevice').val(),
+					"call_direction": $('#inputSessionCallDirection').val()
+				},
+				function (data, status) {
+					console.log(data) // 1 record updated
+					console.log(status) // success
+
+					$('#inputSessionID').val(data);
+
+					$('#btnCreateSession').hide();
+					$('#btnUpdateSession').show();
+					$('#btnStartSession').prop('disabled', false);
+					getTableData();
+				});
+		});
+
+
+		$("#btnUpdateSession").click(function (event) {
+			event.preventDefault();
+			$.post("./updateSession", {
+					"session_name": $('#inputSessionName').val(),
+					"session_id": $('#inputSessionID').val(),
+					"notes": $('#textareaSessionNotes').val(),
+					"passfail": $('#inputSessionPassFail').val(),
+					"provider_device": $('#inputSessionProviderDevice').val(),
+					"call_direction": $('#inputSessionCallDirection').val()
+				},
+				function (data, status) {
+					console.log(data) // 1 record updated
+					console.log(status) // success
+					getTableData();
+				});
+		});
+
+		$("#btnStartSession").click(function (event) {
+			event.preventDefault();
+			var rowCount = datatable.rows()[0].length;
+			for (var row = 0; row < rowCount; row++) {
+				var rdata = datatable.row(row).data()
+				if (rdata.session_start && !rdata.session_end) {
+					alert('Session ' + rdata.session_id + ' is running, please stop it first before starting a new session');
+					return;
+				}
+			}
+			$('#btnStartSession').prop('disabled', true);
+			$.post("./startSession", {
+					"session_id": $('#inputSessionID').val()
+				},
+				function (data, status) {
+
+					$('#inputSessionStartTime').val('Time button was pressed')
+					$('#btnCreateSession').hide();
+					$('#btnUpdateSession').show();
+					$('#btnStopSession').prop('disabled', false);
+					$('#btnStartSession').hide();
+					$('#btnStopSession').show();
+					getTableData();
+				});
+		});
+
+		$("#btnStopSession").click(function (event) {
+			event.preventDefault();
+			$('#btnStopSession').prop('disabled', true);
+			$.post("./stopSession", {
+					"session_id": $('#inputSessionID').val()
+				},
+				function (data, status) {
+
+					$('#inputSessionEndTime').val('Time button was pressed')
+					$('#btnCreateSession').hide();
+					$('#btnUpdateSession').show();
+					$('#btnStartSession').prop('disabled', true);
+					$('#btnStartSession').prop('disabled', true);
+					$('#btnStopSession').prop('disabled', true);
+					$('#btnStartSession').hide();
+					$('#btnStopSession').hide();
+					$('#btnViewResults').show();
+					getTableData();
+				});
+		});
+
+		$("#btnViewResults").click(function (event) {
+			event.preventDefault();
+			var id = $('#inputSessionID').val();
+			var win = window.open('./SessionData?sId=' + id, '_blank');
+			if (win) {
+				win.focus();
+			}
+		});
+
+		$("#btnDeleteSession").click(function (event) {
+			event.preventDefault();
+			$('#confirm-delete').modal();
+		});
+
+		$("#btnDownloadSessionData").click(function (event) {
+			event.preventDefault();
+			var filename = $('#downloadFilename').val();
+			var downloadMode = $('#select_download_option').val();
+			var params = '';
+			switch (downloadMode) {
+				case '0':
+					break;
+				case '1':
+					params = "&startDate=" + start + "&endDate=" + end;
+					break;
+				case '2':
+					params = "&sessionIds="+$("#sessionIds").val();
+					break;
+			}
+			var win = window.open('./download?mode=' + downloadMode + '&filename=' + filename + params, '_blank');
+			if (win) {
+				win.focus();
+			}
+
+		});
+
+		$('#select_download_option').on('change', function () {
+			switch (this.value) {
+				case '0':
+					$('#formDaterange').hide()
+					$('#formSessioids').hide()
+					break;
+				case '1':
+					$('#formDaterange').show()
+					$('#formSessioids').hide()
+					break;
+				case '2':
+					$('#formDaterange').hide()
+					$('#formSessioids').show()
+					break;
+			}
+		})
+
+		function deleteSession() {
+			var id = $('#inputSessionID').val();
+			$.post("./DeleteSession", {
+					"id": id
+				},
+				function (data, status) {
+					location.reload();
+				}
+			);
+		}
+
+		$.validate({
+                modules: 'toggleDisabled',
+                disabledFormFilter: 'form.toggle-disabled',
+                showErrorDialogs: false
+            });
+	</script>
+</body>
+
+</html>

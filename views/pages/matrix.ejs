@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="skin-blue fixed sidebar-mini sidebar-mini-expand-feature">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <% include ../partials/header %>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <% include ../partials/sidebar %>
+        </aside>
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>Matrix</h1>
+                <div id="datetimepicker" class="dropdown-menu-left">
+                    <i class="fa fa-calendar"></i>&nbsp;
+                    <span></span>
+                    <b class="caret"></b>
+                </div>
+
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="./">
+                            <i class="fa fa-bar-chart"></i> Reports</a>
+                    </li>
+                    <li class="active">Matrix</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Latest Inbound Sessions</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div id="matrixInboundboxbody" class="box-body table-responsive" style="overflow-x: scroll">
+                                <table id="matrixInboundTable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th class="text-center">
+                                                iOS
+                                            </th>
+                                            <th class="text-center">
+                                                Windows
+                                            </th>
+                                            <th class="text-center">
+                                                Android
+                                            </th>
+                                            <th class="text-center">
+                                                Mac
+                                            </th>
+                                            <th class="text-center">
+                                                Videophone 1 (VP1)
+                                            </th>
+                                            <th class="text-center">
+                                                Videophone 2 (VP2)
+                                            </th>
+											<th class="text-center">
+												Videophone 3 (VP3)
+											</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Sorenson</th>
+                                            <td id="Sorenson_ios_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_windows_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_android_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_mac_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_vp1_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_vp2_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Sorenson_vp3_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Sorenson)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Purple</th>
+                                            <td id="Purple_ios_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_windows_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_android_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_mac_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_vp1_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_vp2_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Purple_vp3_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Purple)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">ZVRS</th>
+                                            <td id="Zvrs_ios_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_windows_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_android_inbound" class="bg-gray disabled">
+                                                <span>N/A (Z5 Android is not supported anymore)</span>
+                                            </td>
+                                            <td id="Zvrs_mac_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_vp1_inbound">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_vp2_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Zvrs_vp3_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Convo</th>
+                                            <td id="Convo_ios_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_windows_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_android_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_mac_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_vp1_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP1 for Convo)</span>
+                                            </td>
+                                            <td id="Convo_vp2_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP2 for Convo)</span>
+                                            </td>
+											<td id="Convo_vp3_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Convo)</span>
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <th class="text-nowrap" scope="row">Global</th>
+                                            <td id="Global_ios_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_windows_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_android_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_mac_inbound" class="bg-gray disabled">
+                                                <span>N/A (No Mac for Global)</span>
+                                            </td>
+                                            <td id="Global_vp1_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP1 for Global)</span>
+                                            </td>
+                                            <td id="Global_vp2_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP2 for Global)</span>
+                                            </td>
+											<td id="Global_vp3_inbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Global)</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Latest Outbound Sessions</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div id="matrixOutboundboxbody" class="box-body table-responsive" style="overflow-x: scroll">
+                                <table id="matrixOutboundTable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th class="text-center">
+                                                iOS
+                                            </th>
+                                            <th class="text-center">
+                                                Windows
+                                            </th>
+                                            <th class="text-center">
+                                                Android
+                                            </th>
+                                            <th class="text-center">
+                                                Mac
+                                            </th>
+                                            <th class="text-center">
+                                                Videophone 1 (VP1)
+                                            </th>
+                                            <th class="text-center">
+                                                Videophone 2 (VP2)
+                                            </th>
+											<th class="text-center">
+												Videophone 3 (VP3)
+											</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Sorenson</th>
+                                            <td id="Sorenson_ios_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_windows_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_android_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_mac_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_vp1_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_vp2_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Sorenson_vp3_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Sorenson)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Purple</th>
+                                            <td id="Purple_ios_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_windows_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_android_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_mac_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_vp1_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_vp2_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Purple_vp3_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Purple)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">ZVRS</th>
+                                            <td id="Zvrs_ios_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_windows_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_android_outbound" class="bg-gray disabled">
+                                                <span>N/A (Z5 Android is not supported anymore)</span>
+                                            </td>
+                                            <td id="Zvrs_mac_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_vp1_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_vp2_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Zvrs_vp3_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Convo</th>
+                                            <td id="Convo_ios_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_windows_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_android_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_mac_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_vp1_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP1 for Convo)</span>
+                                            </td>
+                                            <td id="Convo_vp2_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP2 for Convo)</span>
+                                            </td>
+											<td id="Convo_vp3_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Convo)</span>
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <th class="text-nowrap" scope="row">Global</th>
+                                            <td id="Global_ios_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_windows_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_android_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_mac_outbound" class="bg-gray disabled">
+                                                <span>N/A (No Mac for Global)</span>
+                                            </td>
+                                            <td id="Global_vp1_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP1 for Global)</span>
+                                            </td>
+                                            <td id="Global_vp2_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP2 for Global)</span>
+                                            </td>
+											<td id="Global_vp3_outbound" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Global)</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+						<div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Latest Videomail Sessions</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div id="matrixVideomailboxbody" class="box-body table-responsive" style="overflow-x: scroll">
+                                <table id="matrixVideomailTable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th class="text-center">
+                                                iOS
+                                            </th>
+                                            <th class="text-center">
+                                                Windows
+                                            </th>
+                                            <th class="text-center">
+                                                Android
+                                            </th>
+                                            <th class="text-center">
+                                                Mac
+                                            </th>
+                                            <th class="text-center">
+                                                Videophone 1 (VP1)
+                                            </th>
+                                            <th class="text-center">
+                                                Videophone 2 (VP2)
+                                            </th>
+											<th class="text-center">
+												Videophone 3 (VP3)
+											</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Sorenson</th>
+                                            <td id="Sorenson_ios_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_windows_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_android_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_mac_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_vp1_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Sorenson_vp2_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Sorenson_vp3_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Sorenson)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Purple</th>
+                                            <td id="Purple_ios_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_windows_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_android_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_mac_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_vp1_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Purple_vp2_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"></div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Purple_vp3_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Purple)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">ZVRS</th>
+                                            <td id="Zvrs_ios_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_windows_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_android_videomail" class="bg-gray disabled">
+                                                <span>N/A (Z5 Android is not supported anymore)</span>
+                                            </td>
+                                            <td id="Zvrs_mac_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_vp1_videomail">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Zvrs_vp2_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+											<td id="Zvrs_vp3_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-nowrap" scope="row">Convo</th>
+                                            <td id="Convo_ios_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_windows_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_android_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_mac_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Convo_vp1_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP1 for Convo)</span>
+                                            </td>
+                                            <td id="Convo_vp2_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP2 for Convo)</span>
+                                            </td>
+											<td id="Convo_vp3_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Convo)</span>
+                                            </td>
+                                        </tr>
+										<tr>
+                                            <th class="text-nowrap" scope="row">Global</th>
+                                            <td id="Global_ios_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_windows_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_android_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
+                                            </td>
+                                            <td id="Global_mac_videomail" class="bg-gray disabled">
+                                                <span>N/A (No Mac for Global)</span>
+                                            </td>
+                                            <td id="Global_vp1_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP1 for Global)</span>
+                                            </td>
+                                            <td id="Global_vp2_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP2 for Global)</span>
+                                            </td>
+											<td id="Global_vp3_videomail" class="bg-gray disabled">
+                                                <span>N/A (No VP3 for Global)</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content - wrapper -->
+
+        <footer class="main-footer">
+            <% include ../partials/footer %>
+        </footer>
+    </div>
+    <div class="modal fade" id="SessionDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Session Details</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table" id="table_session_info">
+                        <tbody>
+                            <tr>
+                                <th style="width:25%">session_id:</th>
+                                <td id="td_session_id"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">session_name:</th>
+                                <td id="td_session_name"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">provider_device:</th>
+                                <td id="td_provider_device"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">call_direction:</th>
+                                <td id="td_call_direction"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">session_start:</th>
+                                <td id="td_session_start"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">session_end:</th>
+                                <td id="td_session_end"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">session_duration:</th>
+                                <td id="td_session_duration"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">pcap_file_name:</th>
+                                <td id="td_pcap_file_name"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">asterisk_file_name:</th>
+                                <td id="td_asterisk_file_name"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">tester_name:</th>
+                                <td id="td_tester_name"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">test_environment:</th>
+                                <td id="td_test_environment"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">ad_version:</th>
+                                <td id="td_ad_version"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">asterisk_version:</th>
+                                <td id="td_asterisk_version"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">passfail:</th>
+                                <td id="td_session_passfail"></td>
+                            </tr>
+                            <tr>
+                                <th style="width:25%">session_notes:</th>
+                                <td id="td_session_notes"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./wrapper -->
+    <script type="text/javascript">
+        $('#reports_treeview').addClass('active');
+        $('#reports_matrix_treeview').addClass('active');
+
+        var selectedDate = moment();
+        setDate(selectedDate)
+
+        $('#datetimepicker').daterangepicker({
+            singleDatePicker: true,
+            startDate: selectedDate,
+            timePicker: true,
+            timePickerIncrement: 1,
+            locale: {
+                format: 'MM/DD/YYYY h:mm A'
+            }
+        }, setDate)
+
+        function setDate(date) {
+            $('#datetimepicker span').html(date.format('MMMM D, YYYY h:mm a'));
+        }
+
+        $('#datetimepicker').on('apply.daterangepicker', function (evt, picker) {
+            selectedDate = moment(picker.startDate.format('MM/DD/YYYY h:mm A'));
+            getMatrixData("inbound");
+            getMatrixData("outbound");
+			getMatrixData("videomail");
+        });
+
+        getMatrixData("inbound");
+        getMatrixData("outbound");
+		getMatrixData("videomail");
+
+        $("#matrixInboundTable").on("click", "td", function () {
+            var sId = $(this).children('span[name="sessionId"]').html();
+            if (sId)
+                getSessionInfo(sId);
+        });
+        $("#matrixOutboundTable").on("click", "td", function () {
+            var sId = $(this).children('span[name="sessionId"]').html();
+            if (sId)
+                getSessionInfo(sId);
+        });
+		$("#matrixVideomailTable").on("click", "td", function () {
+            var sId = $(this).children('span[name="sessionId"]').html();
+            if (sId)
+                getSessionInfo(sId);
+        });
+
+
+        function getSessionInfo(sId) {
+            $.ajax({
+                url: "./getSessionInfo",
+                data: {
+                    "session_id": sId
+                },
+                success: function (sessioninfo) {
+                    if (sessioninfo.message == 'Success') {
+                        $('#td_session_start').html(moment(sessioninfo.data[0].session_start).local()
+                            .format('YYYY/MM/DD h:mm:ss a'))
+                        $('#td_session_end').html(moment(sessioninfo.data[0].session_end).local().format(
+                            'YYYY/MM/DD h:mm:ss a'))
+                        $('#td_session_duration').html(sessioninfo.data[0].session_duration)
+
+                        if (sessioninfo.data[0].pcap_file_name) {
+                            $('#td_pcap_file_name').html('<a href=# onclick=downloadPCAP(' +
+                                sessioninfo.data[0].session_id +
+                                ') ><span id="pcapFilename">' + sessioninfo.data[0].pcap_file_name +
+                                '</span></a>')
+                        } else {
+                            $('#td_pcap_file_name').html('No PCAP File')
+                        }
+                        if (sessioninfo.data[0].asterisk_file_name) {
+                            $('#td_asterisk_file_name').html(
+                                '<a href=# onclick=downloadAsteriskLog(' + sessioninfo.data[0].session_id +
+                                ') ><span id="asteriskLogFilename">' + sessioninfo.data[0].asterisk_file_name +
+                                '</span></a>')
+                        } else {
+                            $('#td_asterisk_file_name').html('No Asterisk Log File')
+                        }
+                        $('#td_session_id').html(sessioninfo.data[0].session_id)
+                        $('#td_session_name').html(sessioninfo.data[0].session_name)
+                        $('#td_tester_name').html(sessioninfo.data[0].tester_name)
+                        $('#td_test_environmentt').html(sessioninfo.data[0].test_environment)
+                        $('#td_ad_version').html(sessioninfo.data[0].ad_version)
+                        $('#td_asterisk_version').html(sessioninfo.data[0].asterisk_version)
+                        $('#td_session_notes').html(sessioninfo.data[0].session_notes)
+                        $('#td_session_passfail').html(sessioninfo.data[0].passfail)
+                        $('#td_provider_device').html(sessioninfo.data[0].provider_device)
+                        $('#td_call_direction').html(sessioninfo.data[0].call_direction)
+                        $('#SessionDetailsModal').modal();
+                    } else {
+                        //alert("Error")
+                    }
+                }
+            });
+        };
+
+        function getMatrixData(direction) {
+            clearCells()
+            console.log(selectedDate.format('x'))
+            $.ajax({
+                url: "./getMatrixData",
+                data: {
+                    "call_direction": direction,
+                    "datetime": selectedDate.format('x')
+                },
+                success: function (matrixData) {
+                    if (matrixData.message == 'Success') {
+                        for (var i in matrixData.data) {
+                            if (matrixData.data[i].provider_device) {
+                                var cellId = '';
+                                switch (matrixData.data[i].provider_device) {
+                                    case 'Sorenson_iOS':
+                                        cellId = '#Sorenson_ios';
+                                        break;
+                                    case 'Sorenson_Windows':
+                                        cellId = '#Sorenson_windows';
+                                        break;
+                                    case 'Sorenson_Android':
+                                        cellId = '#Sorenson_android';
+                                        break;
+                                    case 'Sorenson_Mac':
+                                        cellId = '#Sorenson_mac';
+                                        break;
+                                    case 'Sorenson_VP1':
+                                        cellId = '#Sorenson_vp1';
+                                        break;
+                                    case 'Sorenson_VP2':
+                                        cellId = '#Sorenson_vp2';
+                                        break;
+                                    case 'Purple_iOS':
+                                        cellId = '#Purple_ios';
+                                        break;
+                                    case 'Purple_Windows':
+                                        cellId = '#Purple_windows';
+                                        break;
+                                    case 'Purple_Android':
+                                        cellId = '#Purple_android';
+                                        break;
+                                    case 'Purple_Mac':
+                                        cellId = '#Purple_mac';
+                                        break;
+                                    case 'Purple_VP1':
+                                        cellId = '#Purple_vp1';
+                                        break;
+									case 'Purple_VP2':
+										cellId = '#Purple_vp2';
+										break;
+                                    case 'ZVRS_iOS':
+                                        cellId = '#Zvrs_ios';
+                                        break;
+                                    case 'ZVRS_Windows':
+                                        cellId = '#Zvrs_windows';
+                                        break;
+                                    case 'ZVRS_Mac':
+                                        cellId = '#Zvrs_mac';
+                                        break;
+                                    case 'ZVRS_VP1':
+                                        cellId = '#Zvrs_vp1';
+                                        break;
+                                    case 'ZVRS_VP2':
+                                        cellId = '#Zvrs_vp2';
+                                        break;
+									case 'ZVRS_VP3':
+										cellId = '#Zvrs_vp3';
+										break;
+                                    case 'Convo_iOS':
+                                        cellId = '#Convo_ios';
+                                        break;
+                                    case 'Convo_Windows':
+                                        cellId = '#Convo_windows';
+                                        break;
+                                    case 'Convo_Android':
+                                        cellId = '#Convo_android';
+                                        break;
+                                    case 'Convo_Mac':
+                                        cellId = '#Convo_mac';
+                                        break;
+									case 'Global_iOS':
+										cellId = '#Global_ios';
+										break;
+									case 'Global_Windows':
+										cellId = '#Global_windows';
+										break;
+									case 'Global_Android':
+										cellId = '#Global_android';
+										break;
+                                }
+                                populateCell(cellId + "_" + direction, matrixData.data[i])
+                            }
+                        }
+
+                    }
+                }
+            });
+        }
+
+        function populateCell(id, data) {
+            $(id).removeClass();
+            $(id).children('span[name="sessionId"]').html(data.session_id);
+            $(id).children('div [name="sessionDate"]').html(moment(data.session_end).local().format(
+                'MMM D, YYYY h:mm a'));
+            $(id).children('div[name="sessionName"]').html(data.session_name);
+            $(id).children('div[name="sessionNotes"]').html(data.session_notes);
+            if (data.passfail == 'pass') {
+                $(id).addClass("bg-green disabled")
+            } else if (data.passfail == 'fail') {
+                $(id).addClass('bg-red disabled')
+            }
+        }
+
+        function clearCells() {
+            let cells = ['#Sorenson_ios',
+                '#Sorenson_windows',
+                '#Sorenson_android',
+                '#Sorenson_mac',
+                '#Sorenson_vp1',
+                '#Sorenson_vp2',
+                '#Purple_ios',
+                '#Purple_windows',
+                '#Purple_android',
+                '#Purple_mac',
+                '#Purple_vp1',
+				'#Purple_vp2',
+                '#Zvrs_ios',
+                '#Zvrs_windows',
+                '#Zvrs_mac',
+                '#Zvrs_vp1',
+                '#Zvrs_vp2',
+				'#Zvrs_vp3',
+                '#Convo_ios',
+                '#Convo_windows',
+                '#Convo_android',
+                '#Convo_mac',
+				'#Global_ios',
+				'#Global_windows',
+				'#Global_android'
+            ];
+
+            for (var i in cells) {
+                $(cells[i] + '_inbound').removeClass();
+                $(cells[i] + '_inbound').children('span[name="sessionId"]').html('');
+                $(cells[i] + '_inbound').children('div[name="sessionDate"]').html('');
+                $(cells[i] + '_inbound').children('div[name="sessionName"]').html('');
+                $(cells[i] + '_inbound').children('div[name="sessionNotes"]').html('');
+
+                $(cells[i] + '_outbound').removeClass();
+                $(cells[i] + '_outbound').children('span[name="sessionId"]').html('');
+                $(cells[i] + '_outbound').children('div[name="sessionDate"]').html('');
+                $(cells[i] + '_outbound').children('div[name="sessionName"]').html('');
+                $(cells[i] + '_outbound').children('div[name="sessionNotes"]').html('');
+				
+				$(cells[i] + '_videomail').removeClass();
+                $(cells[i] + '_videomail').children('span[name="sessionId"]').html('');
+                $(cells[i] + '_videomail').children('div[name="sessionDate"]').html('');
+                $(cells[i] + '_videomail').children('div[name="sessionName"]').html('');
+                $(cells[i] + '_videomail').children('div[name="sessionNotes"]').html('');
+            }
+
+        }
+
+        function downloadPCAP(id) {
+            window.open('./downloadPcapFile?session_id=' + id);
+        }
+
+
+        function downloadAsteriskLog(id) {
+            window.open('./downloadAsteriskLog?session_id=' + id);
+        }
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,59 @@
+<!-- sidebar -->
+<section class="sidebar">
+  <ul class="sidebar-menu" data-widget="tree">
+    <li class="header">Navigation</li>
+    <li id="reports_treeview" class="treeview">
+      <a href="#">
+        <i class="fa fa-bar-chart"></i>
+        <span>Reports</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li id="reports_cdr_treeview">
+          <a href="./cdr">
+            <i class="fa fa-circle-o"></i>CDR</a>
+        </li>
+        <li id="reports_session_data_treeview">
+          <a href="./SessionData">
+            <i class="fa fa-circle-o"></i>Session Data</a>
+        </li>
+        <li id="reports_session_manager_treeview">
+          <a href="./sessionManager">
+            <i class="fa fa-circle-o"></i>Session Manager</a>
+        </li>
+        <!--
+        <li id="reports_device_manager_treeview">
+          <a href="./deviceManager">
+            <i class="fa fa-circle-o"></i>Device Manager</a>
+        </li>
+        -->
+        <li id="reports_matrix_treeview">
+          <a href="./matrix">
+            <i class="fa fa-circle-o"></i>Matrix</a>
+        </li>
+      </ul>
+    </li>
+    <% if (role == 'admin') { %>
+      <li id="admin_treeview" class="treeview">
+        <a href="#">
+          <i class="fa fa-lock"></i>
+          <span>Administrator</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li id="admin_users_treeview">
+            <a href="./users">
+              <i class="fa fa-circle-o"></i>
+              <span>User Management</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    <% } %>
+  </ul>
+</section>
+<!-- /.sidebar -->

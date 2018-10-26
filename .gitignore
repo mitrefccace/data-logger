@@ -1,0 +1,5 @@
+node_modules
+public/assets
+.nyc_output/
+.env
+config.json

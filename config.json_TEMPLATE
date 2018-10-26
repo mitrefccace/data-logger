@@ -1,0 +1,21 @@
+{
+    "debuglevel": "ALL | TRACE | DEBUG | INFO | WARN ERROR | FATAL | OFF",
+    "port": "server listen port #",
+    "logdirectory": "path where logs are stored",
+    "proxy":"proxy address",
+    "s3bucket":"S3 bucket name",
+    "ssl" : {
+      "key": "path to key",
+      "cert": "path to cert"
+    },
+    "session": {
+      "name":"session name",
+      "secret": "secret here",
+    },
+    "mysql": {
+      "host": "localhost",
+      "user": "mysql username",
+      "password": "mysql password",
+      "database": "<database_name>"
+    }
+}

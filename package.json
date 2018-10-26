@@ -1,0 +1,38 @@
+{
+  "name": "data-logger",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "nyc mocha --recursive test",
+    "build": "node ./build.js || true",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "admin-lte": "^2.4.8",
+    "aws-sdk": "^2.202.0",
+    "body-parser": "~1.15.2",
+    "datatables.net-jqui": "^2.1.1",
+    "dateformat": "^3.0.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "express-mysql-session": "1.2.3",
+    "express-session": "1.15.6",
+    "jquery-form-validator": "^2.3.77",
+    "json2csv": "3.11.5",
+    "morgan": "~1.7.0",
+    "mysql": "2.15.0",
+    "nconf": "0.9.1",
+    "proxy-agent": "^2.2.0",
+    "ps-list": "^4.0.0",
+    "request": "2.83.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "decache": "^4.4.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "should": "^13.2.1",
+    "supertest": "^3.1.0"
+  }
+}

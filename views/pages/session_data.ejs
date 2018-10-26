@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include ../partials/head %>
+</head>
+
+<body class="skin-blue fixed sidebar-mini sidebar-mini-expand-feature">
+	<div class="wrapper">
+
+		<header class="main-header">
+			<% include ../partials/header %>
+		</header>
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
+			<% include ../partials/sidebar %>
+		</aside>
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>Session Data</h1>
+				<ol class="breadcrumb">
+					<li>
+						<a href="./">
+							<i class="fa fa-bar-chart"></i> Reports</a>
+					</li>
+					<li class="active">Session Data</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="box">
+							<div class="box-header with-border">
+								<!--h3 class="box-title">Session</h3-->
+								<select class="form-control select2 select2-hidden-accessible box-title" id="select_session_name" tabindex="-1" aria-hidden="true">
+									<% sessions.forEach(function(session) {  %>
+										<option value='<%= session.session_id %>' <% if(session.session_id==sId) { %> selected
+											<% } %> >
+												<%= session.session_id %>: <%= session.session_name %>
+										</option>
+										<% }) %>
+								</select>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<div class="table-responsive">
+									<table class="table" id="table_session_info">
+										<tbody>
+											<tr>
+												<th style="width:25%">provider_device:</th>
+												<td id="td_provider_device"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">call_direction:</th>
+												<td id="td_call_direction"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">session_start:</th>
+												<td id="td_session_start"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">session_end:</th>
+												<td id="td_session_end"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">session_duration:</th>
+												<td id="td_session_duration"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">pcap_file_name:</th>
+												<td id="td_pcap_file_name"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">asterisk_file_name:</th>
+												<td id="td_asterisk_file_name"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">tester_name:</th>
+												<td id="td_tester_name"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">test_environment:</th>
+												<td id="td_test_environment"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">ad_version:</th>
+												<td id="td_ad_version"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">asterisk_version:</th>
+												<td id="td_asterisk_version"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">passfail:</th>
+												<td id="td_session_passfail"></td>
+											</tr>
+											<tr>
+												<th style="width:25%">session_notes:</th>
+												<td id="td_session_notes"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<div class="box">
+							<div class="box-header with-border">
+								<h3 class="box-title">Call Logs</h3>
+								<!--div class="box-tools pull-right">
+									<button class="btn btn-box-tool" id="refreshdatabtn">
+										<i class="fa fa-refresh"></i>
+									</button>
+									<button class="btn btn-box-tool" id="researchdatadownloadbtn">
+										<i class="fa fa-download"></i>
+									</button>
+								</div-->
+							</div>
+							<!-- /.box-header -->
+							<div id="calllogtablediv" class="box-body table-responsive" style="overflow-x: scroll">
+								<table id="calllogtable" class="table table-bordered table-hover" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th class="text-center">call_id</th>
+											<th class="text-center">session_id</th>
+											<th class="text-center">src_channel</th>
+											<th class="text-center">dest_channel</th>
+											<th class="text-center">call_start</th>
+											<th class="text-center">call_end</th>
+											<th class="text-center">call_duration</th>
+											<th class="text-center">unique_id</th>
+											<th class="text-center">dest_phone_number</th>
+											<th class="text-center">device_type</th>
+											<th class="text-center">call_notes</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /.box -->
+					</div>
+				</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content - wrapper -->
+
+		<footer class="main-footer">
+			<% include ../partials/footer %>
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+	<script type="text/javascript">
+		$('#reports_treeview').addClass('active');
+		$('#reports_session_data_treeview').addClass('active');
+
+		getSessionInfo(); //get the data on load.
+		$('#select_session_name').on('change', function () {
+			getSessionInfo()
+		})
+
+		function getSessionInfo() {
+			var sId = $('#select_session_name').val();
+			clearData();
+			$.ajax({
+				url: "./getSessionInfo",
+				data: {
+					"session_id": sId
+				},
+				success: function (sessioninfo) {
+					if (sessioninfo.message == 'Success') {
+						$('#td_session_start').html(moment(sessioninfo.data[0].session_start).local().format('YYYY/MM/DD h:mm:ss a'))
+						$('#td_session_end').html(moment(sessioninfo.data[0].session_end).local().format('YYYY/MM/DD h:mm:ss a'))
+						$('#td_session_duration').html(sessioninfo.data[0].session_duration)
+
+						if (sessioninfo.data[0].pcap_file_name) {
+							$('#td_pcap_file_name').html('<a href=# onclick=downloadPCAP(' + sessioninfo.data[0].session_id +
+								') ><span id="pcapFilename">' + sessioninfo.data[0].pcap_file_name + '</span></a>')
+						} else {
+							$('#td_pcap_file_name').html('No PCAP File')
+						}
+						if (sessioninfo.data[0].asterisk_file_name) {
+							$('#td_asterisk_file_name').html('<a href=# onclick=downloadAsteriskLog(' + sessioninfo.data[0].session_id +
+								') ><span id="asteriskLogFilename">' + sessioninfo.data[0].asterisk_file_name + '</span></a>')
+						} else {
+							$('#td_asterisk_file_name').html('No Asterisk Log File')
+						}
+
+						$('#td_tester_name').html(sessioninfo.data[0].tester_name)
+						$('#td_test_environmentt').html(sessioninfo.data[0].test_environment)
+						$('#td_ad_version').html(sessioninfo.data[0].ad_version)
+						$('#td_asterisk_version').html(sessioninfo.data[0].asterisk_version)
+						$('#td_session_notes').html(sessioninfo.data[0].session_notes)
+
+						$('#td_session_passfail').html(sessioninfo.data[0].passfail)
+						$('#td_provider_device').html(sessioninfo.data[0].provider_device)
+						$('#td_call_direction').html(sessioninfo.data[0].call_direction)
+					} else {
+						alert("Error")
+					}
+				}
+			});
+
+		}
+
+		function downloadPCAP(id) {
+				window.open('./downloadPcapFile?session_id='+id);
+		}
+
+
+		function downloadAsteriskLog(id) {
+				window.open('./downloadAsteriskLog?session_id='+id);
+		}
+
+		function clearData() {
+			$('#table_session_info tbody > tr > td').html('');
+		}
+	</script>
+</body>
+
+</html>
