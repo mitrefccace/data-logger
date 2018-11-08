@@ -12,6 +12,7 @@
     "aws-sdk": "^2.202.0",
     "body-parser": "~1.15.2",
     "bootstrap": "^4.1.2",
+    "cached-path-relative": "^1.0.2",
     "cryptiles": "^4.1.2",
     "datatables.net-jqui": "^2.1.1",
     "dateformat": "^3.0.3",
