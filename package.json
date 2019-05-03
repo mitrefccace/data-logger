@@ -25,6 +25,7 @@
     "fresh": "^0.5.2",
     "hoek": "^4.2.1",
     "https-proxy-agent": "^2.2.0",
+    "jquery": "^3.4.0",
     "jquery-form-validator": "^2.3.77",
     "json2csv": "3.11.5",
     "mime": "^1.4.1",
