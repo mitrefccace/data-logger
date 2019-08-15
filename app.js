@@ -3,7 +3,6 @@ var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
 var bodyParser = require('body-parser');
 var nconf = require('nconf');
 var mysql = require('mysql');
@@ -43,7 +42,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

@@ -170,8 +170,11 @@
                                                 <div name="sessionName"> </div>
                                                 <div name="sessionNotes"></div>
                                             </td>
-                                            <td id="Zvrs_android_inbound" class="bg-gray disabled">
-                                                <span>N/A (Z5 Android is not supported anymore)</span>
+                                            <td id="Zvrs_android_inbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
                                             </td>
                                             <td id="Zvrs_mac_inbound" class="disabled">
                                                 <span name="sessionId"></span>
@@ -404,8 +407,11 @@
                                                 <div name="sessionName"> </div>
                                                 <div name="sessionNotes"></div>
                                             </td>
-                                            <td id="Zvrs_android_outbound" class="bg-gray disabled">
-                                                <span>N/A (Z5 Android is not supported anymore)</span>
+                                            <td id="Zvrs_android_outbound" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
                                             </td>
                                             <td id="Zvrs_mac_outbound" class="disabled">
                                                 <span name="sessionId"></span>
@@ -639,8 +645,11 @@
                                                 <div name="sessionName"> </div>
                                                 <div name="sessionNotes"></div>
                                             </td>
-                                            <td id="Zvrs_android_videomail" class="bg-gray disabled">
-                                                <span>N/A (Z5 Android is not supported anymore)</span>
+                                            <td id="Zvrs_android_videomail" class="disabled">
+                                                <span name="sessionId"></span>
+                                                <div name="sessionDate"></div>
+                                                <div name="sessionName"> </div>
+                                                <div name="sessionNotes"></div>
                                             </td>
                                             <td id="Zvrs_mac_videomail" class="disabled">
                                                 <span name="sessionId"></span>
@@ -757,8 +766,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Session Details</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <table class="table" id="table_session_info">
@@ -981,6 +990,9 @@
                                     case 'ZVRS_iOS':
                                         cellId = '#Zvrs_ios';
                                         break;
+                                    case 'ZVRS_Android':
+                                        cellId = '#Zvrs_android';
+                                        break;
                                     case 'ZVRS_Windows':
                                         cellId = '#Zvrs_windows';
                                         break;
@@ -1055,6 +1067,7 @@
                 '#Purple_vp1',
 				'#Purple_vp2',
                 '#Zvrs_ios',
+                '#Zvrs_android',
                 '#Zvrs_windows',
                 '#Zvrs_mac',
                 '#Zvrs_vp1',
@@ -1081,7 +1094,7 @@
                 $(cells[i] + '_outbound').children('div[name="sessionDate"]').html('');
                 $(cells[i] + '_outbound').children('div[name="sessionName"]').html('');
                 $(cells[i] + '_outbound').children('div[name="sessionNotes"]').html('');
-				
+
 				$(cells[i] + '_videomail').removeClass();
                 $(cells[i] + '_videomail').children('span[name="sessionId"]').html('');
                 $(cells[i] + '_videomail').children('div[name="sessionDate"]').html('');

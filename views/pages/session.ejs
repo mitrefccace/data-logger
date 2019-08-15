@@ -89,10 +89,10 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
+					<h4 class="modal-title" id="configModalLabel">Session Details</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="configModalLabel">Session Details</h4>
 				</div>
 				<div class="modal-body">
 					<form id="sessionForm">
@@ -108,37 +108,38 @@
 						<div class="form-group">
 							<label class="control-label">Provider Device</label>
 							<select class="form-control" id='inputSessionProviderDevice'>
-							
+
 								<option value='Convo_Android'>Convo Android</option>
 								<option value='Convo_iOS'>Convo iOS</option>
 								<option value='Convo_Mac'>Convo Mac</option>
 								<option value='Convo_Windows'>Convo Windows</option>
-							
+
 								<option value='Global_Android'>Global Android</option>
 								<option value='Global_iOS'>Global iOS</option>
 								<option value='Global_Windows'>Global Windows</option>
-							
+
 								<option value='Purple_Android'>Purple Android</option>
 								<option value='Purple_iOS'>Purple iOS</option>
 								<option value='Purple_Mac'>Purple Mac</option>
 								<option value='Purple_VP1'>Purple VP1 SmartVP</option>
 								<option value='Purple_VP2'>Purple VP2 P70</option>
 								<option value='Purple_Windows'>Purple Windows</option>
-							
+
 								<option value='Sorenson_Android'>Sorenson Android</option>
 								<option value='Sorenson_iOS'>Sorenson iOS</option>
 								<option value='Sorenson_Mac'>Sorenson Mac</option>
 								<option value='Sorenson_VP1'>Sorenson VP1</option>
 								<option value='Sorenson_VP2'>Sorenson VP2</option>
 								<option value='Sorenson_Windows'>Sorenson Windows</option>
-							
+
 								<option value='ZVRS_iOS'>ZVRS iOS</option>
+								<option value='ZVRS_Android'>ZVRS Android</option>
 								<option value='ZVRS_Mac'>ZVRS Mac</option>
 								<option value='ZVRS_VP1'>ZVRS VP1 Z70</option>
 								<option value='ZVRS_VP2'>ZVRS VP2 Z20</option>
 								<option value='ZVRS_VP3'>ZVRS VP3 i3</option>
 								<option value='ZVRS_Windows'>ZVRS Windows</option>
-							
+
 								<option value='Other'>Other</option>
 							</select>
 						</div>
@@ -155,14 +156,14 @@
 							<label for="inputSessionTesterName" class="control-label">Tester Name</label>
 							<input type="text" class="form-control" id="inputSessionTesterName" disabled>
 						</div>
-						<div class="row">
-							<div class="col-xs-6">
+						<div class="row form-group">
+							<div class="col-lg-6">
 								<div class="form-group">
 									<label for="inputSessionStartTime" class="control-label">Start Time</label>
 									<input type="text" class="form-control" id="inputSessionStartTime" disabled>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-6">
 								<div class="form-group">
 									<label for="inputSessionEndTime" class="control-label">End Time</label>
 									<input type="text" class="form-control" id="inputSessionEndTime" disabled>
@@ -202,10 +203,10 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
+					<h4 class="modal-title" id="configModalLabel">Session Downloads</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="configModalLabel">Session Downloads</h4>
 				</div>
 
 				<form class="form-horizontal test-form toggle-disabled has-validation-callback disabled-without-errors" id="downloadForm">
@@ -250,8 +251,8 @@
 			<div class="modal-content">
 
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 
 				<div class="modal-body">

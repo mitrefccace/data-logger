@@ -40,9 +40,10 @@ app.set('port', port);
 console.log("Listening for HTTPS connections");
 var credentials = {
   key: fs.readFileSync(decode(nconf.get('ssl:key'))),
-  cert: fs.readFileSync(decode(nconf.get('ssl:cert')))
+  cert: readFileSync(decode(nconf.get('ssl:cert')))
 };
-var server = https.createServer(credentials, app);
+
+var server = http.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.
