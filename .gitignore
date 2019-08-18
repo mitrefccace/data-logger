@@ -3,3 +3,4 @@ public/assets
 .nyc_output/
 .env
 config.json
+.DS_Store
