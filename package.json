@@ -8,6 +8,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "acorn": "^5.7.4",
     "admin-lte": "^2.4.10",
     "aws-sdk": "^2.428.0",
     "body-parser": "~1.15.2",
@@ -25,6 +26,7 @@
     "jquery-form-validator": "^2.3.79",
     "json2csv": "3.11.5",
     "lodash": "^4.17.13",
+    "minimist": "^1.2.2",
     "mysql": "2.15.0",
     "nconf": "0.9.1",
     "proxy-agent": "^2.3.1",
