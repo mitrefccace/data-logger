@@ -28,7 +28,7 @@
     "jquery-form-validator": "^2.3.79",
     "json2csv": "3.11.5",
     "lodash": "^4.17.13",
-    "minimist": "^1.2.3",
+    "minimist": "^1.2.6",
     "mysql": "2.15.0",
     "nconf": "0.9.1",
     "proxy-agent": "^2.3.1",
