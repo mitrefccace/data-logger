@@ -20,7 +20,7 @@
     "datatables.net-jqui": "^2.1.1",
     "dateformat": "^3.0.3",
     "ejs": "^2.5.9",
-    "express": "~4.14.0",
+    "express": "~4.17.3",
     "express-mysql-session": "1.2.3",
     "express-session": "1.15.6",
     "https-proxy-agent": "^2.2.4",
